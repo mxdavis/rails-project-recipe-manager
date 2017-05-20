@@ -3,6 +3,12 @@ Plan for upcoming Project:
 <!--1. Create Rails App-->
 2. Add Devise 
     <!--created user with devise-->
+    https://learn.co/tracks/full-stack-web-dev-with-react/rails/authentication/devise-lab?batch_id=306&track_id=23144
+    add omniauth (maybe google) 
+    add gem
+    add fields to user column --> provider:index uid:index
+    <!--add devise alerts to layouts-->
+    And add the Omniauth configuration to config/initializers/devise.rb:
    
     Some setup you must do manually if you haven't yet:
 
@@ -31,4 +37,7 @@ Plan for upcoming Project:
 
 
 3. Push to Heroku
+   setting export secret etc to heroku https://devcenter.heroku.com/articles/config-vars
 4. Models --- 
+5. Move navbar to it's own partial
+6. Move alerts to it's own partial
