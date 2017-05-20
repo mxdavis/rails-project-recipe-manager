@@ -1,7 +1,8 @@
 Plan for upcoming Project:
 
 <!--1. Create Rails App-->
-2. Add Devise
+2. Add Devise 
+    <!--created user with devise-->
    
     Some setup you must do manually if you haven't yet:
 
