@@ -66,6 +66,7 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hashie (3.5.5)
     i18n (0.8.1)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
@@ -91,7 +92,11 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
+    omniauth (1.6.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
+    pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -117,6 +122,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.3)
       actionpack (= 5.0.3)
       activesupport (= 5.0.3)
@@ -182,9 +192,12 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  omniauth
+  pg
   pry
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails_12factor
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
