@@ -39,5 +39,8 @@ Plan for upcoming Project:
 3. Push to Heroku
    setting export secret etc to heroku https://devcenter.heroku.com/articles/config-vars
 4. Models --- 
+5. CanCan
+    https://learn.co/tracks/full-stack-web-dev-with-react/rails/authentication/cancan?batch_id=306&track_id=23144
+    https://github.com/CanCanCommunity/cancancan
 5. Move navbar to it's own partial
 6. Move alerts to it's own partial
