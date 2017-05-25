@@ -13,23 +13,23 @@
 ActiveRecord::Schema.define(version: 20170525094511) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "recipe_id",     null: false
-    t.integer  "ingredient_id", null: false
-    t.integer  "rating",        null: false
+    t.integer  "recipe_id",   null: false
+    t.integer  "user_id",     null: false
+    t.integer  "rating",      null: false
     t.string   "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["ingredient_id"], name: "index_comments_on_ingredient_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer  "recipe_id",     null: false
-    t.integer  "ingredient_id", null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["ingredient_id"], name: "index_favorites_on_ingredient_id"
+    t.integer  "recipe_id",  null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|

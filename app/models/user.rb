@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :ingredients, through: :recipes
 
   validates :name, uniqueness: true
-  validates :password, length: { in: 6..20 }
+  validates :password, length: { minimum: 6 }
 
   has_secure_password
 
