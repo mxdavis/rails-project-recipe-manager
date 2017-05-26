@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def update
     @user = find_user_by_id
-    redirect_to request.referer || root_path, alert: "You cannot update this user" unless current_user.edit?(@user)
+    redirect_to request.referer || root_path, alert: "You cannot update this user" unless current_user.can_edit?(@user)
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have successfully updated #{@user.name}"
     else

@@ -4,3 +4,12 @@
 <%= render 'ingredients/list_ingredients', recipe: recipe %>
 
 <h4><%= recipe.instructions %></h4>
+
+
+<% if logged_in? && current_user.can_edit?(recipe)%>
+  EDIT LINK
+<% end %>
+
+<% if logged_in? && current_user.can_delete?(recipe)%>
+  DELete LINK
+<% end %>
