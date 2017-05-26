@@ -1,5 +1,5 @@
 <% comments.each do |comment| %>
-  <h3><%= "#{comment.user_name} gives #{comment.rating} stars on #{comment.time}"%></h3>
+  <h3><%= link_to comment.user.name, user_path(comment.user) %><%= " gives #{comment.rating} stars on #{comment.time}"%></h3>
   <%= comment.description %>
   <% if current_page?("/users/#{comment.user.id}") && logged_in? %>
     <p><%= link_to "Recipe: #{comment.recipe.name}", recipe_path(comment.recipe) %></p>
