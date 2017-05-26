@@ -14,4 +14,8 @@ class Recipe < ApplicationRecord
   def self.newest(number = all.size)
     order("ID DESC").limit(number)
   end
+
+  def self.fastest(number = all.size)
+    order("time_in_minutes ASC").limit(number)
+  end
 end
