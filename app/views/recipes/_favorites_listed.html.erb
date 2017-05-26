@@ -1,5 +1,5 @@
 <ul>  
   <% favorites.each do |popular|%>
-  <li><h2><%= link_to popular.recipe.name, recipe_path(popular.recipe)%></h2></li>
+  <%= render 'recipes/list_recipes', recipe: popular.recipe %>
   <% end %>
 </ul>

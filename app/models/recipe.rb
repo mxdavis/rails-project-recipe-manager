@@ -10,4 +10,8 @@ class Recipe < ApplicationRecord
   def user_name
     user.name
   end
+
+  def self.newest(number = all.size)
+    order("ID DESC").limit(number)
+  end
 end

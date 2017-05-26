@@ -1,0 +1,5 @@
+<li><h2><%= link_to recipe.name, recipe_path(recipe)%></h2></li>
+<li><%= recipe.time_in_minutes %> minutes until it's ready | By: <%= recipe.user_name%></l3>
+<% if !current_page?('/') && logged_in? %>
+  <%= link_to "Edit", edit_recipe_path(recipe) if current_user.can_edit?(recipe)%> | <%= link_to "Delete", recipe_path(recipe), method: :delete if current_user.can_delete?(recipe)%>
+<% end %>
