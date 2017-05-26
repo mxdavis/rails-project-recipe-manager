@@ -1,1 +1,9 @@
 <%= render 'recipes/recipe_details', recipe: @recipe %>
+<div>
+<%= render 'comments/list_comments', comments: @recipe.comments if @recipe.comments %>
+</div>
+<br />
+<div id="comments">
+Add your comment below! (You must be signed in)
+<%= render 'comments/form', comment: @recipe.comments.new, recipe: @recipe%>
+</div>

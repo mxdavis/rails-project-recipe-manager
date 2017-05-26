@@ -1,0 +1,4 @@
+<% comments.each do |comment| %>
+  <h3><%= "#{comment.user_name} gives #{comment.rating} stars on #{comment.time}"%></h3>
+  <%= comment.description %>
+<% end %>

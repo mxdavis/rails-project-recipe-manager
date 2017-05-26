@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :users do 
     resources :admin
   end
-  resources :recipes
+  resources :recipes do 
+    resources :comments
+  end
 
   root to: 'recipes#home'
   get '/login' => 'sessions#new'
