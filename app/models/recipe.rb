@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
 
   validates :name, uniqueness: true
+  validates :name, presence: true
 
   def self.most_popular
     #arel to find recipe that has been saved several times, limit 3
