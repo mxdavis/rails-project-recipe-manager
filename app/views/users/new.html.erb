@@ -1,0 +1,8 @@
+<h1>Signup!</h1>
+
+<%= form_for @user do |f| %>
+  <%= render 'form', f: f %>
+  <div>Password Confirmation:</div> <div><%= f.password_field :password_confirmation %></div>
+  <%= f.submit "Submit" %>
+
+<% end %>

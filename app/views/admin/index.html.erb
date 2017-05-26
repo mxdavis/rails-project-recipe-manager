@@ -1,0 +1,10 @@
+<ul>  
+  <% @user.each do |user| %>
+    <li>
+      <%= link_to "Edit #{@user.name}", edit_user_path(@user)%>
+      <%= link_to "Delete #{@user.name}", edit_user_path(@user), method: :delete%>
+      <%= "Admin" if @user.admin?%>
+    </li>
+
+</ul>
+  
