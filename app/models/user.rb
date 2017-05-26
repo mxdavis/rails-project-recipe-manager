@@ -6,25 +6,38 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, presence: true
-  validates :password, length: { minimum: 6 }
+
+  validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => { minimum: 6 },
+                       :unless => :already_has_password?
 
   has_secure_password
 
   def admin?
-    #does this work?
     admin
   end
 
-  def edit?(model)
-    self == model.user || admin?
+  def edit?(class_type)
+    if class_type.is_a?(User)
+      self == class_type || admin?
+    else
+      self == class_type.user || admin?
+    end
   end
 
-  def delete?(model)
-    case model
+  def delete?(class_type)
+    case class_type
     when User || Recipe || Ingredient
       admin?
     when Comment
       edit?
     end
+  end
+
+  private
+
+  def already_has_password?
+    !self.password_digest.blank?
   end
 end
