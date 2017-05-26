@@ -1,0 +1,10 @@
+
+  <% if alert %>
+    <div id="notice_wrapper" class="alert">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% elsif notice %>
+    <div id="notice_wrapper">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>

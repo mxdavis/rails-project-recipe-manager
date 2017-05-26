@@ -1,0 +1,10 @@
+<navbar>
+  <%= link_to "Home", root_path %>
+  <%if logged_in? %>
+    <%= link_to "Sign out", logout_path, method: :delete %>
+    <%= link_to "Hi, #{current_user.name}", user_path(current_user) %>
+  <% else %>
+    <%= link_to "Sign in", login_path %>
+    <%= link_to "Sign up", signup_path %>
+  <%end%>
+</navbar>
