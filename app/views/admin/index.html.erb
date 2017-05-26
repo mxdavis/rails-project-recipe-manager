@@ -1,10 +1,18 @@
+<h1>Edit Users and Authorize Admins</h1>
+
 <ul>  
-  <% @user.each do |user| %>
+  <% @users.each do |user| %>
     <li>
-      <%= link_to "Edit #{@user.name}", edit_user_path(@user)%>
-      <%= link_to "Delete #{@user.name}", edit_user_path(@user), method: :delete%>
-      <%= "Admin" if @user.admin?%>
+      <%= user.name %>
+      <%= link_to "Edit", edit_user_path(user)%>
+      <%= link_to "Delete", edit_user_path(user), method: :delete%>
+  
+      <%= form_for user do |f| %>
+        <div>Admin:</div> <div><%= f.check_box :admin %></div>
+        <%= f.submit "Update Admin Status" %>
+      <% end %>
     </li>
+  <% end %>
 
 </ul>
   

@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || root_path, alert: "You cannot access this page" unless logged_in? && current_user.id == params[:id].to_i
   end
 
+  def authorized_admin
+    redirect_to request.referer || root_path, alert: "You cannot access this page" unless logged_in? && current_user.admin?
+  end
+
+  def authorized
+    redirect_to request.referer || root_path, alert: "You cannot access this page" unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin?)
+  end
+
   # def authorized_delete
   #   redirect_back(fallback_location: root_path), alert: "You cannot delete this" unless current_user.delete(self)
   # end

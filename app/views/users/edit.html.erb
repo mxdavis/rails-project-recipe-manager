@@ -1,5 +1,4 @@
 <%= form_for @user do |f| %>
   <%= render 'form', f: f %>
-  <div>Admin:</div> <div><%= f.check_box :admin %></div>
 <%= f.submit "Submit" %>
 <% end %>
