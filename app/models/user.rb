@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def owns?(id)
-    self.id == id
+    self.id == id.to_i
   end
 
   private
