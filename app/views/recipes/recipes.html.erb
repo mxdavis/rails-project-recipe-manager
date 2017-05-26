@@ -1,0 +1,7 @@
+<h1><%= @sort_kind %></h1>
+
+<% if @recipes %>
+  <%= render 'recipes/recipes_listed', recipes: @recipes %>
+<% elsif @favorites %>
+  <%= render 'recipes/favorites_listed', favorites: @favorites %>
+<% end %>
