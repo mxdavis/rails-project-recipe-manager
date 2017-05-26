@@ -1,0 +1,18 @@
+
+<% if @recipes %>
+  <h1>Recipes by: <%= @user.name %></h1>
+  <%= render 'recipes/recipes_listed', recipes: @recipes %>
+<% end %>
+<% if logged_in? && current_user.owns?(current_user.id)%>
+  <% if @favorites %>
+    <h1>Here are your favorite Recipes:</h1>
+    <%= render 'recipes/favorites_listed', favorites: @favorites %>
+  <% end %>
+  <h1>Add your own recipe now!</h1>
+  <%= render 'recipes/form', recipe: current_user.recipes.new %>
+  <h3><%= link_to "Make Other Users Admins", user_admin_index_path(current_user) if current_user.admin?%></h3>
+<% end %>
+<% if @comments.first %>
+  <h1>Recent Comments by: <%= @user.name %></h1>
+  <%= render 'comments/list_comments', comments: @comments%>
+<% end %>

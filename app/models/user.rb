@@ -39,6 +39,10 @@ class User < ApplicationRecord
     end
   end
 
+  def owns?(id)
+    self.id == id
+  end
+
   private
 
   def already_has_password?

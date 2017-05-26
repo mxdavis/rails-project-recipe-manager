@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorized, except: [:new, :create]
+  before_filter :authorized, except: [:new, :create, :show]
 
   def new
     @user = User.new
@@ -29,6 +29,12 @@ class UsersController < ApplicationController
       flash[:alert] = @user.errors.full_messages.join(", ").downcase
       render :edit
     end
+  end
+
+  def show
+    @user = find_user_by_id
+    @recipes = find_user_by_id.recipes
+    @comments = find_user_by_id.comments
   end
 
   private
