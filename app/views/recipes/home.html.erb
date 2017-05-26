@@ -3,10 +3,12 @@
 <% if @recipes %>
   <%= render 'recipes/favorites_listed', favorites: @favorites %>
 
-All Recipes From New To Old || All Recipes Quickest Cook Until Longest || All Recipes From Most Popular Down
+<%= link_to "All Recipes From New To Old", recipes_sorted_by_newest_path %> |
+<%= link_to "Sort by Fastest Recipes", recipes_sorted_by_cook_time_path %> |
+<%= link_to "All Recipes From Most Popular", recipes_sorted_by_favorite_path %>
 
   <h1>Our 5 latest Recipes</h1>
-  <%= render 'recipes/recipe_listed', recipes: @recipes %>
+  <%= render 'recipes/recipes_listed', recipes: @recipes %>
 <% else %>
   Sign Up and help us add some recipes to our database!
 <% end %>
