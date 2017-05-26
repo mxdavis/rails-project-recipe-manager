@@ -5,5 +5,8 @@ class Recipe < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, presence: true
-
+  
+  def user_name
+    user.name
+  end
 end
