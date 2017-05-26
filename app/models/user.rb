@@ -18,7 +18,7 @@ class User < ApplicationRecord
     admin
   end
 
-  def edit?(class_type)
+  def can_edit?(class_type)
     if class_type.is_a?(User)
       self == class_type || admin?
     else
@@ -26,12 +26,16 @@ class User < ApplicationRecord
     end
   end
 
-  def delete?(class_type)
+  def can_delete?(class_type)
     case class_type
-    when User || Recipe || Ingredient
+    when User
+      admin?
+    when Recipe
+      admin?
+    when Ingredient
       admin?
     when Comment
-      edit?
+      can_edit?
     end
   end
 
