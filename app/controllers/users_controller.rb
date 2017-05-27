@@ -33,8 +33,9 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user_by_id
-    @recipes = find_user_by_id.recipes
-    @comments = find_user_by_id.comments
+    @recipes = @user.recipes
+    @comments = @user.comments
+    @favorites = @user.favorites
   end
 
   private

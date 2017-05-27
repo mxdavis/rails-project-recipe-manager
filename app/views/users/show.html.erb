@@ -4,7 +4,7 @@
   <%= render 'recipes/recipes_listed', recipes: @recipes %>
 <% end %>
 <% if logged_in? && current_user.owns?(params[:id])%>
-  <% if @favorites %>
+  <% if @favorites.first %>
     <h1>Here are your favorite Recipes:</h1>
     <%= render 'recipes/favorites_listed', favorites: @favorites %>
   <% end %>
