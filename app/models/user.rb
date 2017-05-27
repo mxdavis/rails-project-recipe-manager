@@ -13,7 +13,7 @@ class User < ApplicationRecord
                        :unless => :already_has_password?
 
   has_secure_password
-
+  
   def admin?
     admin
   end

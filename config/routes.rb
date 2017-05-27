@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   end
   resources :recipes do 
     resources :comments
+    get '/favorite_recipe' => 'favorites#favorite'
+    get '/unfavorite_recipe' => 'favorites#unfavorite'
   end
 
   root to: 'recipes#home'

@@ -1,6 +1,8 @@
 <h1><%= recipe.name %></h1>
 <h2><%= recipe.time_in_minutes %> minutes until it's ready | By: <%= recipe.user_name%></h2>
 
+<%= render 'favorites/favorited', recipe: recipe%>
+
 <%= render 'ingredients/list_ingredients', recipe: recipe %>
 
 <h4><%= recipe.instructions %></h4>
