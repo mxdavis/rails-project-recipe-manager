@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @comments = @user.comments
     @favorites = @user.favorites
     @recipe = Recipe.new
-    @ingredients = 3.times.map { @recipe.recipe_ingredients.build }
+    @ingredients = 6.times.map { @recipe.recipe_ingredients.build }
   end
 
   private
