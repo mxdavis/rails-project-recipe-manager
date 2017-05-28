@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
+  get 'auth/google_oauth2/callback' => 'sessions#create'
+
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
@@ -22,5 +24,5 @@ Rails.application.routes.draw do
   get 'recipes_sorted_by_cook_time' => 'recipes#sorted_cook_time'
   get 'recipes_sorted_by_newest' => 'recipes#sorted_newest'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
