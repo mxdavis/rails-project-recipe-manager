@@ -13,7 +13,7 @@ Add Ingredients:
     <div>
       Quantity: <%= recipe_ingredient.text_field :quantity %>
   
-    Select Ingredient: <%= recipe_ingredient.collection_select :ingredient_id, Ingredient.all, :id, :name, include_blank: 'Select Ingredient' %>
+    Select Ingredient: <%= recipe_ingredient.collection_select :ingredient_id, Ingredient.order('name ASC').all, :id, :name, include_blank: 'Select Ingredient' %>
     <%= recipe_ingredient.fields_for :ingredient, recipe.ingredients.build do |ingredient| %>
     Or Create New Ingredient: <%= ingredient.text_field :name %>
     <% end %>
