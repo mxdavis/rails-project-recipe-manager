@@ -16,11 +16,13 @@ Specs:
    recipe.user_name
 - [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
   3 types of sorts (links from home page)
-- [ ] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
+- [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
+recipe_ingredients and ingredients under New Recipe
 - [x] Include signup (how e.g. Devise) signup form and bcrypt
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+google
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 comments to recipes
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
