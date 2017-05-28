@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user_by_id
-    @recipes = @user.recipes
+    @recipes = @user.recipes 
     @comments = @user.comments
     @favorites = @user.favorites
     @recipe = Recipe.new
