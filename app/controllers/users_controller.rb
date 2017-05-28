@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "You have successfully signed up"
     else
-      flash[:alert] = @user.errors.full_messages.join(", ").downcase
       render 'new'
     end
   end
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have successfully updated #{@user.name}"
     else
-      flash[:alert] = @user.errors.full_messages.join(", ").downcase
       render :edit
     end
   end
@@ -36,6 +34,8 @@ class UsersController < ApplicationController
     @recipes = @user.recipes
     @comments = @user.comments
     @favorites = @user.favorites
+    @recipe = Recipe.new
+    @ingredients = 3.times.map { @recipe.recipe_ingredients.build }
   end
 
   private

@@ -9,7 +9,7 @@
     <%= render 'recipes/favorites_listed', favorites: @favorites %>
   <% end %>
   <h1>Add your own recipe now!</h1>
-  <%= render 'recipes/form', recipe: current_user.recipes.new %>
+  <%= render 'recipes/form', recipe: @recipe, ingredient: @ingredients %>
   <h3><%= link_to "Make Other Users Admins", user_admin_index_path(current_user) if current_user.admin?%></h3>
 <% end %>
 <% if @comments.first %>

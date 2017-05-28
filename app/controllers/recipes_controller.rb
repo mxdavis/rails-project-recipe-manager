@@ -5,8 +5,48 @@ class RecipesController < ApplicationController
     @favorites = Favorite.top_favorited(3)
   end
 
+  def new
+    @recipe = Recipe.new
+    @ingredients = 3.times.collect { @recipe.recipe_ingredients.build }
+  end
+
+
+  def create
+    recipe = current_user.recipes.new(recipe_params)
+    if recipe.save
+      recipe.add_ingredients_to_recipe(recipe_ingredient_params)
+      redirect_to recipe_path(recipe), notice: "Your recipe has successfully been added"
+    else
+      @recipe = Recipe.new
+      redirect_to new_recipe_path, alert: recipe.errors.full_messages.each {|m| m}.join
+    end
+  end
+
+  def edit
+    @recipe = find_recipe_by_id
+  end
+
+  def update
+    recipe = find_recipe_by_id
+    if recipe.update(recipe_params)
+      recipe.add_ingredients_to_recipe(recipe_ingredient_params)
+      redirect_to recipe_path(recipe), notice: "Your recipe has successfully been updated"
+    else 
+      redirect_to new_recipe_path, alert: recipe.errors.full_messages.each {|m| m}.join
+    end
+
+
+  end
+
   def show
-    @recipe = Recipe.find_by(id: params[:id])
+    @recipe = find_recipe_by_id
+
+  end
+
+  def destroy
+    recipe = find_recipe_by_id
+    recipe.delete
+    redirect_to root_path
   end
 
   def sorted_favorite
@@ -25,5 +65,19 @@ class RecipesController < ApplicationController
     @recipes = Recipe.newest
     @sort_kind = "All Recipes From Newest to Oldest"
     render 'recipes'
+  end
+
+  private 
+
+  def find_recipe_by_id
+    Recipe.find_by(id: params[:id])
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :time_in_minutes, :instructions)
+  end
+
+  def recipe_ingredient_params
+    params.require(:recipe).permit(recipe_ingredients_attributes: [:quantity, :ingredient_id, ingredient: [:name]])
   end
 end

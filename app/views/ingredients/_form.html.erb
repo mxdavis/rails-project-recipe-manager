@@ -1,0 +1,5 @@
+<%= form_for ingredient do |f| %>
+  <%= render 'layouts/form_errors', form: recipe %>
+  <div>Ingredient Name:</div> <div><%= f.text_field :name %></div>
+  <%= f.submit "Add Ingredient" %>
+<% end %>
