@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       if comment.save
         redirect_to recipe_path(comment.recipe), notice: "Your comment was submitted successfully"
       else
-        redirect_to recipe_path(comment.recipe), alert: comment.errors.full_messages.join(", ").downcase
+        redirect_to recipe_path(comment.recipe)
       end  
     else 
       redirect_to login_path, alert: "You must be logged in to comment"
