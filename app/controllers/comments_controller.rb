@@ -21,13 +21,13 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    binding.pry
     @comment = find_by_id(Comment)
-    @comment.update(comment_params)
   end
 
   def update
-
+    comment = find_by_id(Comment)
+    comment.update(comment_params)
+    redirect_to recipe_path(comment.recipe), notice: "Your comment has been updated"
   end
 
   def destroy

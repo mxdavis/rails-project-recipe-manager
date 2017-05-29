@@ -4,4 +4,8 @@
   <% if current_page?("/users/#{comment.user.id}") && logged_in? %>
     <p><%= link_to "Recipe: #{comment.recipe.name}", recipe_path(comment.recipe) %></p>
   <% end %>
+
+  <%= link_to "Edit", edit_recipe_comment_path(comment.recipe, comment) if logged_in? && current_user.can_edit?(comment)%>
+
+  <%= link_to "Delete", recipe_comment_path(comment.recipe, comment), method: :delete if logged_in? && current_user.can_delete?(comment)%>
 <% end %>

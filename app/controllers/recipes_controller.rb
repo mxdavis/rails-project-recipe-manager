@@ -23,12 +23,12 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = find_recipe_by_id
+    @recipe = find_by_id(Recipe)
     @i = 3.times.collect { @recipe.recipe_ingredients.build }
   end
 
   def update
-    recipe = find_recipe_by_id
+    recipe = find_by_id(Recipe)
     if recipe.update(recipe_params)
       recipe.add_ingredients_to_recipe(recipe_ingredient_params)
       redirect_to recipe_path(recipe), notice: "Your recipe has successfully been updated"
@@ -40,12 +40,12 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = find_recipe_by_id
+    @recipe = find_by_id(Recipe)
 
   end
 
   def destroy
-    recipe = find_recipe_by_id
+    recipe = find_by_id(Recipe)
     recipe.delete
     redirect_to root_path
   end
@@ -69,10 +69,6 @@ class RecipesController < ApplicationController
   end
 
   private 
-
-  def find_recipe_by_id
-    Recipe.find_by(id: params[:id])
-  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :time_in_minutes, :instructions)
