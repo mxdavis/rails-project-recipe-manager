@@ -1,24 +1,14 @@
-# README
+This is a recipe app made for a rails project at the Flatiron School.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It allows you to add and edit recipes.
 
-Things you may want to cover:
+Comment and Favorite existing recipes.
 
-* Ruby version
+You can see it live on heroku:
 
-* System dependencies
+https://recipes-app-for-fun.herokuapp.com/
 
-* Configuration
+Or you can fork the repo, bundle, then rails s and see it on http://localhost:3000
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More info can be found at:
+http://malki.rocks/my-first-rails-app-back-to-recipes/
