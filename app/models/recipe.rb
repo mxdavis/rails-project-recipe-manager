@@ -11,6 +11,8 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, reject_if: lambda {|attributes| attributes['name'].blank?}
   accepts_nested_attributes_for :recipe_ingredients, reject_if: lambda {|attributes| attributes['name'].blank?}
 
+  scope :fastest, -> { order("time_in_minutes ASC") }
+
   include ActionView::Helpers::TextHelper
   
   def user_name
@@ -19,10 +21,6 @@ class Recipe < ApplicationRecord
 
   def self.newest(number = all.size)
     order("ID DESC").limit(number)
-  end
-
-  def self.fastest(number = all.size)
-    order("time_in_minutes ASC").limit(number)
   end
 
   def favorite?(current_user)
