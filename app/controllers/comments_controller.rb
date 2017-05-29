@@ -2,13 +2,13 @@ class CommentsController < ApplicationController
   
   def new
     @comment = Comment.new
-    @recipe = find_by_id(Recipe)
+    @recipe = find_by_recipe_id
   end
 
   def create
     if logged_in?
       comment = Comment.new(comment_params)
-      comment.recipe = find_by_id(Recipe)
+      comment.recipe = find_by_recipe_id
       comment.user = current_user
       if comment.save
         redirect_to recipe_path(comment.recipe), notice: "Your comment was submitted successfully"
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def edit
     binding.pry
     @comment = find_by_id(Comment)
-    @recipe = find_by_id(Recipe)
+    @comment.update(comment_params)
   end
 
   def update
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = find_by_id(Comment)
-    recipe = find_by_id(Recipe)
+    recipe = Recipe.find_by(id: params[:recipe_id])
     comment.delete
     flash[:notice] = "Comment has been deleted"
     redirect_back(fallback_location: root_path)
@@ -43,5 +43,8 @@ class CommentsController < ApplicationController
   def comment_params
      params.require(:comment).permit(:rating, :description)
   end
+
+
+
 
 end
