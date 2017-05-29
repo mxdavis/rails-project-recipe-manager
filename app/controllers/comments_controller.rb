@@ -32,7 +32,6 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = find_by_id(Comment)
-    recipe = Recipe.find_by(id: params[:recipe_id])
     comment.delete
     flash[:notice] = "Comment has been deleted"
     redirect_back(fallback_location: root_path)
