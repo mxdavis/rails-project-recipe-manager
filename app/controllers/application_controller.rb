@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
   def authorized
     redirect_to request.referer || root_path, alert: "You cannot access this page" unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin?)
   end
+
+  def find_by_id(class_name)
+    class_name.find_by(id: params[:id])
+  end
 end

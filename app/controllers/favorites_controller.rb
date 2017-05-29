@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 
   def favorite
     if logged_in? 
-      recipe = Recipe.find_by(id: params[:recipe_id])
+      recipe = find_by_id(Recipe)
       favorite = Favorite.new(recipe: recipe, user: current_user)
       if favorite.save 
         flash["notice"] = "You have favorited #{recipe.name}"
@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
 
   def unfavorite
     if logged_in? 
-      recipe = Recipe.find_by(id: params[:recipe_id])
+      recipe = find_by_id(Recipe)
       favorite = Favorite.find_by(recipe: recipe, user: current_user)
       favorite.delete
       flash["notice"] = "You have unfavorited #{recipe.name}"

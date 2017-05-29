@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = find_user_by_id
+    @user = find_by_id(User)
   end
 
   def update
-    @user = find_user_by_id
+    @user = find_by_id(User)
     redirect_to request.referer || root_path, alert: "You cannot update this user" unless current_user.can_edit?(@user)
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have successfully updated #{@user.name}"
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = find_user_by_id
+    @user = find_by_id(User)
     @recipes = @user.recipes 
     @comments = @user.comments
     @favorites = @user.favorites
@@ -39,11 +39,7 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def find_user_by_id
-    User.find_by(id: params[:id])
-  end
-
+  
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation, :admin)
   end

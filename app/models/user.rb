@@ -46,7 +46,7 @@ class User < ApplicationRecord
     when Ingredient
       admin?
     when Comment
-      can_edit?
+      can_edit?(class_type)
     end
   end
 
