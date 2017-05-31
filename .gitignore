@@ -19,3 +19,8 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+/config/application.yml
+
+# Ignore application configuration
+/config/application.yml
