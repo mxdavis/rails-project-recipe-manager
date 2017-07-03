@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = find_by_id(Recipe)
     respond_to do |format|
-      # format.html { render :show }
+      format.html { render :show }
       format.json { render json: @recipe }
     end
   end
