@@ -51,17 +51,12 @@ class RecipesController < ApplicationController
   end
 
   def sorted_favorite
-    @favorites = Favorite.top_favorited
+    @recipes = Favorite.get_favorite_recipes_in_order
     @sort_kind = "All Recipes sorted by the most favorite ones"
-    render json: { 
-      attachmentPartial: 
-        render_to_string(
-          partial: 'recipes/recipes', 
-          formats: :html, 
-          layout: false, 
-          locals: { favorites: @favorites, sort_kind: @sort_kind }
-        )
-    }
+    respond_to do |format|
+      format.html { render :recipes }
+      format.json {render json: @recipes}
+    end
   end
 
   def sorted_cook_time
