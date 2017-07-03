@@ -1,10 +1,10 @@
 <% if current_user && recipe.favorite?(current_user) %>
-  <span id="favorites" class="favorited">
+  <span class="favorites favorited">
     <%= link_to image_tag("heart-red.png"), recipe_unfavorite_recipe_path(recipe)%>
     
   </span>
 <% else %>
-  <span id="favorites" class="favorite">
+  <span class="favorites favorite">
     <%= link_to image_tag("heart.png"), recipe_favorite_recipe_path(recipe)%>
   </span>
 <% end %>

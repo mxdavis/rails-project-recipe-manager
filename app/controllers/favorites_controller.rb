@@ -10,7 +10,6 @@ class FavoritesController < ApplicationController
 
   def favorite
     if logged_in? 
-      binding.pry
       recipe = find_by_recipe_id
       favorite = Favorite.new(recipe: recipe, user: current_user)
       if favorite.save 
