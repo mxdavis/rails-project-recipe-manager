@@ -1,7 +1,16 @@
 class FavoritesController < ApplicationController
 
+  def show
+    favorite = Favorite.all
+    respond_to do |format|
+      # format.html { render :show }
+      format.json { render json: favorite }
+    end
+  end
+
   def favorite
     if logged_in? 
+      binding.pry
       recipe = find_by_recipe_id
       favorite = Favorite.new(recipe: recipe, user: current_user)
       if favorite.save 
