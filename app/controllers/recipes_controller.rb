@@ -53,28 +53,19 @@ class RecipesController < ApplicationController
   def sorted_favorite
     @recipes = Favorite.get_favorite_recipes_in_order
     @sort_kind = "All Recipes sorted by the most favorite ones"
-    respond_to do |format|
-      format.html { render :recipes }
-      format.json {render json: @recipes}
-    end
+    render_layout_recipes_false
   end
 
   def sorted_cook_time
     @recipes = Recipe.fastest
     @sort_kind = "All Recipes From Fastest to Slowest"
-    respond_to do |format|
-      format.html { render :recipes }
-      format.json {render json: @recipes}
-    end
+    render_layout_recipes_false
   end
 
   def sorted_newest
     @recipes = Recipe.newest
     @sort_kind = "All Recipes From Newest to Oldest"
-    respond_to do |format|
-      format.html { render :recipes }
-      format.json {render json: @recipes}
-    end
+    render_layout_recipes_false
   end
 
   private 
@@ -85,5 +76,12 @@ class RecipesController < ApplicationController
 
   def recipe_ingredient_params
     params.require(:recipe).permit(recipe_ingredients_attributes: [:quantity, :ingredient_id, ingredient: [:name]])
+  end
+
+  def render_layout_recipes_false
+    respond_to do |format|
+      format.html { render :recipes, layout: false}
+      format.json {render json: @recipes}
+    end
   end
 end
