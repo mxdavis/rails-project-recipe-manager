@@ -51,6 +51,7 @@ class RecipesController < ApplicationController
   end
 
   def sorted_favorite
+    binding.pry
     @favorites = Favorite.top_favorited
     @sort_kind = "All Recipes sorted by the most favorite ones"
     render 'recipes'

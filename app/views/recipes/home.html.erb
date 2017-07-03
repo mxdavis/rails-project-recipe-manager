@@ -3,12 +3,16 @@
 <% if @recipes %>
   <%= render 'recipes/favorites_listed', favorites: @favorites %>
 
-<%= link_to "All Recipes From New To Old", recipes_sorted_by_newest_path %> |
-<%= link_to "Sort by Fastest Recipes", recipes_sorted_by_cook_time_path %> |
-<%= link_to "All Recipes From Most Popular", recipes_sorted_by_favorite_path %>
+  <div id="sort-recipes-by">
+    <%= link_to "All Recipes From New To Old", recipes_sorted_by_newest_path %> |
+    <%= link_to "Sort by Fastest Recipes", recipes_sorted_by_cook_time_path %> |
+    <%= link_to "All Recipes From Most Popular", recipes_sorted_by_favorite_path %>
+  </div>
 
-  <h1>Our 5 latest Recipes</h1>
-  <%= render 'recipes/recipes_listed', recipes: @recipes %>
+  <div id="list-recipes">
+    <h1>Our 5 latest Recipes</h1>
+    <%= render 'recipes/recipes_listed', recipes: @recipes %>
+  </div>
 <% else %>
   Sign Up and help us add some recipes to our database!
 <% end %>
