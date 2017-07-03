@@ -9,6 +9,14 @@ Rails.application.routes.draw do
     get '/unfavorite_recipe' => 'favorites#unfavorite'
   end
 
+  resources :users, :none do 
+    resources :recipes, :none do
+      get '/favorites' => 'favorites#show'
+    end
+  end
+
+
+
   root to: 'recipes#home'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -23,8 +31,5 @@ Rails.application.routes.draw do
   get 'recipes_sorted_by_favorite' => 'recipes#sorted_favorite'
   get 'recipes_sorted_by_cook_time' => 'recipes#sorted_cook_time'
   get 'recipes_sorted_by_newest' => 'recipes#sorted_newest'
-
-  get 'all_favorites' => 'favorites#show'
-
 
 end

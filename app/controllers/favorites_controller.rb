@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
 
   def show
-    favorite = Favorite.all
+    favorite = Favorite.find_by(recipe: find_by_recipe_id, user: find_by_user_id)
     respond_to do |format|
-      # format.html { render :show }
       format.json { render json: favorite }
     end
   end

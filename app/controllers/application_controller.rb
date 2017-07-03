@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
   def find_by_recipe_id
     Recipe.find_by(id: params[:recipe_id])
   end
+
+  def find_by_user_id
+    User.find_by(id: params[:user_id])
+  end
 end
