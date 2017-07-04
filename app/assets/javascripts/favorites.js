@@ -7,22 +7,23 @@ class Favorite {
     this.userId = userId
     this.id = id
   }
-  changeHeart(){
-    if(this.id){
-      return '<img src="/assets/heart.png" alt="Heart">'
-    } else {
-      return '<img src="/assets/heart-red.png" alt="Heart">'
-    }
-  }
-  changeClass(){
-    if(this.id){
-      return 'favorites favorite'
-    } else {
-      return 'favorites favorited'
-    }
+}
+
+Favorite.prototype.changeClass = function(){
+  if(this.id){
+    return 'favorites favorite'
+  } else {
+    return 'favorites favorited'
   }
 }
 
+Favorite.prototype.changeHeart = function(){
+  if(this.id){
+    return '<img src="/assets/heart.png" alt="Heart">'
+  } else {
+    return '<img src="/assets/heart-red.png" alt="Heart">'
+  }
+}
 
 $(document).on("click", "span.favorites", function(e){
   e.preventDefault()
