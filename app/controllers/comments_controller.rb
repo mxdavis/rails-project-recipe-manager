@@ -2,19 +2,25 @@ class CommentsController < ApplicationController
   
   def new
     @comment = Comment.new
-    @recipe = find_by_recipe_id
+  end
+
+  def show
+    binding.pry
+    comment = Comment.find_by(user: current_user, recipe: find_by_recipe_id)
+    render json: comment
   end
 
   def create
+        
     if logged_in?
+      binding.pry
       comment = Comment.new(comment_params)
       comment.recipe = find_by_recipe_id
       comment.user = current_user
-      if comment.save
-        redirect_to recipe_path(comment.recipe), notice: "Your comment was submitted successfully"
-      else
-        redirect_to recipe_path(comment.recipe)
-      end  
+      comment.save
+      
+        render json: comment, status: 201
+      
     else 
       redirect_to login_path, alert: "You must be logged in to comment"
     end

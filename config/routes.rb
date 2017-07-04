@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
   get 'auth/google_oauth2/callback' => 'sessions#create'
+  post 'comments_new' => 'comments#new'
 
 
   get '/signup' => 'users#new'
