@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   end
   resources :recipes do 
     resources :comments
-    post '/favorite_recipe' => 'favorites#favorite'
-    post '/unfavorite_recipe' => 'favorites#unfavorite'
     get '/favorite' => 'favorites#show'
     post '/favorite' => 'favorites#update'
   end
