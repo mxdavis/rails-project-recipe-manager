@@ -1,6 +1,6 @@
-<%= form_for [recipe, comment] do |f| %>
-  <%= render 'layouts/form_errors', form: comment %>
-  <div class="comment-form">
+<div class="comment-form">
+  <%= form_for [recipe, comment] do |f| %>
+    <%= render 'layouts/form_errors', form: comment %>
     <div class="comment-rating">Rating: (1-5)</div> <div><%= f.text_field :rating %></div>
     <div class= "comment-description">Description</div> <div><%= f.text_field :description %></div>
     <%= f.submit %>
