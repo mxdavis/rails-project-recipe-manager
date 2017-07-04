@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :comments
     post '/favorite_recipe' => 'favorites#favorite'
     post '/unfavorite_recipe' => 'favorites#unfavorite'
-    # get '/favorites' => 'favorites#show'
   end
 
   root to: 'recipes#home'
