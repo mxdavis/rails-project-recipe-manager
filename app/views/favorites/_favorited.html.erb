@@ -1,10 +1,10 @@
 <% if current_user && recipe.favorite?(current_user) %>
   <span class="favorites favorited">
-    <%= link_to image_tag("heart-red.png"), recipe_unfavorite_recipe_path(recipe), :data => {:recipe => recipe.id }%>
+    <%= link_to image_tag("heart-red.png"), "#", :data => {:recipe => recipe.id }%>
     
   </span>
 <% else %>
   <span class="favorites favorite">
-    <%= link_to image_tag("heart.png"), recipe_favorite_recipe_path(recipe), :data => {:recipe => recipe.id }%>
+    <%= link_to image_tag("heart.png"), "#", :data => {:recipe => recipe.id }%>
   </span>
 <% end %>
