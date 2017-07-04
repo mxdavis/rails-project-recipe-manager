@@ -1,6 +1,7 @@
 <% comments.each do |comment| %>
-  <h3><%= link_to comment.user.name, user_path(comment.user) %><%= " gives #{comment.rating} stars on #{comment.time}"%></h3>
-  <%= comment.description %>
+  <div class="comments">
+  <h3 class="comment-heading"><%= link_to comment.user.name, user_path(comment.user) %><%= " gives #{comment.rating} stars on #{comment.time}"%></h3>
+  <p class="comment-description"><%= comment.description %></p>
   <% if current_page?("/users/#{comment.user.id}") && logged_in? %>
     <p><%= link_to "Recipe: #{comment.recipe.name}", recipe_path(comment.recipe) %></p>
   <% end %>
@@ -8,4 +9,5 @@
   <%= link_to "Edit", edit_recipe_comment_path(comment.recipe, comment) if logged_in? && current_user.can_edit?(comment)%>
 
   <%= link_to "Delete", recipe_comment_path(comment.recipe, comment), method: :delete if logged_in? && current_user.can_delete?(comment)%>
+  </div>
 <% end %>
