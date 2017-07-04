@@ -44,16 +44,16 @@ $(document).on("click", "span.favorites", function(e){
   e.preventDefault()
   dom = e
   var recipeId = parseInt(e.target.parentNode.dataset.recipe)
-   $.get("/recipes/" + recipeId + "/favorite.json", function(data) {
-
+   $.get("/recipes/" + recipeId + "/favorite.json", function(favorite) {
+      if (favorite == null){
         f = new Favorite(recipeId)
-        dom.currentTarget.children["0"].innerHTML = f.changeHeart()
-        dom.currentTarget.className = f.changeClass()
-        debugger
- 
-        var posting = $.post("/recipes/" + recipeId + "/favorite", f);
+      }else{
+        f = new Favorite(recipeId, favorite.data.attributes["user-id"], favorite.data.id)
+      }
+      dom.currentTarget.children["0"].innerHTML = f.changeHeart()
+      dom.currentTarget.className = f.changeClass()
+
+      $.post("/recipes/" + recipeId + "/favorite", f)
+
     });
-
-
-
 })
