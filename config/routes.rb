@@ -5,17 +5,10 @@ Rails.application.routes.draw do
   end
   resources :recipes do 
     resources :comments
-    get '/favorite_recipe' => 'favorites#favorite'
-    get '/unfavorite_recipe' => 'favorites#unfavorite'
+    post '/favorite_recipe' => 'favorites#favorite'
+    post '/unfavorite_recipe' => 'favorites#unfavorite'
+    # get '/favorites' => 'favorites#show'
   end
-
-  resources :users, :none do 
-    resources :recipes, :none do
-      get '/favorites' => 'favorites#show'
-    end
-  end
-
-
 
   root to: 'recipes#home'
   get '/login' => 'sessions#new'

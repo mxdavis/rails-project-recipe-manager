@@ -1,17 +1,16 @@
-class Favorite {
-  constructor(id, user_id, recipe_id) {
-    this.id = id;
-    this.recipe_id = recipe_id;
-    this.user_id = user_id;
-  }
-}
 
-$(document).on("click", "span.favorites", function(e){
+$(document).on("click", "span.favorited", function(e){
   e.preventDefault()
-  debugger
-  $.get('/users/1/recipes/1/favorites.json', function(data) {
-    debugger
-    new Favorite(data.id, data.attributes.recipe-id, data.attributes.user-id )
+  $.post(`/recipes/${recipeId}/unfavorite_recipe`, function(data) {
     }, this)
-        debugger
+
+        this.children["0"].innerHTML = '<img src="/assets/heart.png" alt="Heart">'
+})
+
+$(document).on("click", "span.favorite", function(e){
+  e.preventDefault()
+  var recipeId = parseInt(e.target.parentNode.dataset.recipe)
+  $.post(`/recipes/${recipeId}/favorite_recipe`, function(data) {
+    }, this)
+    this.children["0"].innerHTML = '<img src="/assets/heart-red.png" alt="Heart">'
 })

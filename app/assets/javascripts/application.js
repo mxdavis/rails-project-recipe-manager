@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
- $('span.favorites').on('click', function(e){ 
-     e.preventDefault()
-    console.log('hello')        
-});

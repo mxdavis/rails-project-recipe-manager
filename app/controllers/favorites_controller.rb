@@ -1,11 +1,11 @@
 class FavoritesController < ApplicationController
 
-  def show
-    favorite = Favorite.find_by(recipe: find_by_recipe_id, user: find_by_user_id)
-    respond_to do |format|
-      format.json { render json: favorite }
-    end
-  end
+  # def show
+  #   favorite = Favorite.find_by(recipe: find_by_recipe_id, user: current_user)
+  #   respond_to do |format|
+  #     format.json { render json: favorite }
+  #   end
+  # end
 
   def favorite
     if logged_in? 
@@ -19,7 +19,9 @@ class FavoritesController < ApplicationController
     else 
       flash["alert"] = "Please login to favorite recipes"
     end
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.json { render json: favorite }
+    end
   end
 
   def unfavorite
@@ -31,6 +33,8 @@ class FavoritesController < ApplicationController
     else 
       flash["alert"] = "Please login to favorite recipes"
     end
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.json { render json: favorite }
+    end
   end
 end
