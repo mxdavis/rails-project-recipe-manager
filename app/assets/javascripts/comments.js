@@ -13,7 +13,6 @@ class Comment {
 }
 
 Comment.prototype.returnCommentHtml = function(){
-  debugger
   var source   = $("#comment-template").html();
   var template = Handlebars.compile(source);
   var context = {
@@ -25,7 +24,7 @@ Comment.prototype.returnCommentHtml = function(){
     id: c.id
   };
   c.template = template(context);
-  debugger
+  $('div#comments').before(c.template)
 }
 
 $(document).on('turbolinks:load', function () {
@@ -39,12 +38,11 @@ $(document).on('turbolinks:load', function () {
     console.log("I worked!");
     $.post(actionLink, params)
     .success(function(json){
-      debugger
       c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.included[0].attributes.name, json.data.id)
       c.returnCommentHtml()
     })
     .error(function(response){
-      
+      $('div#comments').before("there has been an error, try again")
     })
   });
 })
