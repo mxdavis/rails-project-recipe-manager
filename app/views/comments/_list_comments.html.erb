@@ -11,3 +11,8 @@
   <%= link_to "Delete", recipe_comment_path(comment.recipe, comment), method: :delete if logged_in? && current_user.can_delete?(comment)%>
   </div>
 <% end %>
+
+<script id="comment-template" type="text/x-handlebars-template">
+   {{rating}}
+   {{description}}
+ </script>

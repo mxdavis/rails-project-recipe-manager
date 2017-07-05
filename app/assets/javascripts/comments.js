@@ -1,17 +1,23 @@
 var c 
 
 class Comment {
-  constructor(rating, description, recipeId, userId, id) {
+  constructor(rating, description, recipeId, userId, id, template) {
     this.rating = rating
     this.description = description
     this.recipeId = recipeId
     this.userId = userId
     this.id = id
+    this.template = template
   }
 }
 
-Comment.prototype.displayComment = function(){
-  
+Comment.prototype.returnCommentHtml = function(){
+  debugger
+  var source   = $("#comment-template").html();
+  var template = Handlebars.compile(source);
+  var context = {rating: "MY rating", description: "description"};
+  c.template = template(context);
+  debugger
 }
 
 $(document).on('turbolinks:load', function () {
@@ -27,7 +33,7 @@ $(document).on('turbolinks:load', function () {
     $.post(actionLink, params)
     .success(function(json){
       c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.data.id)
-      c.displayComment()
+      c.returnCommentHtml()
     })
     .error(function(response){
       
