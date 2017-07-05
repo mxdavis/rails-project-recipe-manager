@@ -25,6 +25,8 @@ Comment.prototype.returnCommentHtml = function(){
   };
   c.template = template(context);
   $('div#comments').before(c.template)
+  $('input#comment_rating').val("")
+  $('input#comment_description').val("")
 }
 
 $(document).on('turbolinks:load', function () {
