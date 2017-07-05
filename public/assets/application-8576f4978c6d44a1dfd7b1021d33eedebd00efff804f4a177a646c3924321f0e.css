@@ -1,0 +1,42 @@
+/* line 5, /Users/malkadavis/Documents/rails-project-recipe-manager/app/assets/stylesheets/recipes.scss */
+.favorited a {
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
+}
+
+/* line 11, /Users/malkadavis/Documents/rails-project-recipe-manager/app/assets/stylesheets/recipes.scss */
+.favorite a {
+  font-weight: bold;
+  color: green;
+  text-decoration: none;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.alert {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
