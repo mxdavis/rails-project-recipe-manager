@@ -13,6 +13,12 @@
 <% end %>
 
 <script id="comment-template" type="text/x-handlebars-template">
-   {{rating}}
-   {{description}}
+  <div class="comments">
+    <h3 class="cheading"><a href="/users/"{{userId}}>{{userName}}</a> gives {{rating}} stars Just Now</h3>
+    <p class="cdescription">{{description}}</p>
+
+    <a href="/recipes/{{recipeId}}/comments/{{id}}/edit">Edit</a>
+
+    <a rel="nofollow" data-method="delete" href="/recipes/{{recipeId}}/comments/{{id}}">Delete</a>
+  </div>
  </script>

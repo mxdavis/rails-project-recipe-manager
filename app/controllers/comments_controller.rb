@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def show
     comment = Comment.find_by(user: current_user, recipe: find_by_recipe_id)
     respond_to do |f|        
-      f.json {render :json => comment, include: ['user', 'recipe']}        
+      f.json {render json: comment, include: :user}       
     end 
   end
 
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       comment.user = current_user
       if comment.save
         respond_to do |f|        
-          f.json {render :json => comment}        
+          f.json {render json: comment, include: :user}        
         end 
       end
     else 
