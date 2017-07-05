@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post '/favorite' => 'favorites#update'
   end
 
+  # post '/comments_create' => 'comments#create'
     
   root to: 'recipes#home'
   get '/login' => 'sessions#new'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
   get 'auth/google_oauth2/callback' => 'sessions#create'
-  post 'comments_new' => 'comments#new'
 
 
   get '/signup' => 'users#new'
