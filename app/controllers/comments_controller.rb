@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       comment.recipe = find_by_recipe_id
       comment.user = current_user
       if comment.save
-        respond_to do |f|        
+        respond_to do |f|     
           f.json {render json: comment, include: :user}        
         end 
       end

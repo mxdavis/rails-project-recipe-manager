@@ -16,7 +16,14 @@ Comment.prototype.returnCommentHtml = function(){
   debugger
   var source   = $("#comment-template").html();
   var template = Handlebars.compile(source);
-  var context = {rating: "MY rating", description: "description"};
+  var context = {
+    rating: c.rating,
+    description: c.description,
+    recipeId: c.recipeId,
+    userId: c.userId,
+    userName: c.userName,
+    id: c.id
+  };
   c.template = template(context);
   debugger
 }
