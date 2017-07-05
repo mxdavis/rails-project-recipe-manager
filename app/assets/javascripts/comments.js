@@ -29,22 +29,34 @@ Comment.prototype.returnCommentHtml = function(){
   $('input#comment_description').val("")
 }
 
+var postForm = function (form){
+  let actionLink = form.attr("action")
+  let params = form.serialize()
+  
+  $.post(actionLink, params)
+  .success(function(json){
+    c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.included[0].attributes.name, json.data.id)
+    c.returnCommentHtml()
+  })
+  .error(function(response){
+    $('div#comments').before("there has been an error, try again")
+  })  
+}
+
+var deleteComment = function(currentComment){
+
+}
+
+
 $(document).on('turbolinks:load', function () {
   $('form#new_comment').on("submit", function(e){
     e.preventDefault();
-
-    let form = $(this)
-    let actionLink = form.attr("action")
-    let params = form.serialize()
-    
-    console.log("I worked!");
-    $.post(actionLink, params)
-    .success(function(json){
-      c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.included[0].attributes.name, json.data.id)
-      c.returnCommentHtml()
-    })
-    .error(function(response){
-      $('div#comments').before("there has been an error, try again")
-    })
+    form = $(this)
+    postForm(form)
   });
+  $(document).on("click", "a.delete_comment", function(e){
+    e.preventDefault();
+    var currentComment = this
+    deleteComment(this)
+  })
 })
