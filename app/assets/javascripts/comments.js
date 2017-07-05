@@ -9,6 +9,11 @@ class Comment {
     this.id = id
   }
 }
+
+Comment.prototype.displayComment = function(){
+  
+}
+
 $(document).on('turbolinks:load', function () {
   $('form#new_comment').on("submit", function(e){
     e.preventDefault();
@@ -20,17 +25,9 @@ $(document).on('turbolinks:load', function () {
     
     console.log("I worked!");
     $.post(actionLink, params)
-
-//in case doesnt work use:
-    // $.ajax({
-    //   url: actionLink, 
-    //   data: params, 
-    //   dataType: "json",
-    //   method: "POST" 
-    // })
     .success(function(json){
-      debugger
-      console.log(json)
+      c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.data.id)
+      c.displayComment()
     })
     .error(function(response){
       
