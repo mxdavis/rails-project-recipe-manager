@@ -1,7 +1,7 @@
 <% comments.each do |comment| %>
   <div class="comments">
-  <h3 class="comment-heading"><%= link_to comment.user.name, user_path(comment.user) %><%= " gives #{comment.rating} stars on #{comment.time}"%></h3>
-  <p class="comment-description"><%= comment.description %></p>
+  <h3 class="cheading"><%= link_to comment.user.name, user_path(comment.user) %><%= " gives #{comment.rating} stars on #{comment.time}"%></h3>
+  <p class="cdescription"><%= comment.description %></p>
   <% if current_page?("/users/#{comment.user.id}") && logged_in? %>
     <p><%= link_to "Recipe: #{comment.recipe.name}", recipe_path(comment.recipe) %></p>
   <% end %>
