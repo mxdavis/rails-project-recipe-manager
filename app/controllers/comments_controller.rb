@@ -37,10 +37,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = find_by_id(Comment)
+    id = params["id"].to_i
+    comment = Comment.find_by(id: id)
     comment.delete
     flash[:notice] = "Comment has been deleted"
-    redirect_back(fallback_location: root_path)
+    # respond_to do |f| 
+    #   f.json {render :nothing, status: 200}       
+    #   # f.html {redirect_back(fallback_location: root_path)}       
+    # end 
   end
 
 

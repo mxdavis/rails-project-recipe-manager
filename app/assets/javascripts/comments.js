@@ -44,12 +44,14 @@ var postForm = function (form){
 }
 
 var deleteComment = function(currentComment){
-  debugger
+
+  let data = currentComment.parentElement.serialize();
   $.ajax({
     url: currentComment.href,
     type: 'DELETE',
+    data: data, 
+    dataType: "json",
     success: function(result) {
-        currentComment.parentElement.remove()
     },
     error: function(result){
       "something went wrong" + result
@@ -66,8 +68,8 @@ $(document).on('turbolinks:load', function () {
   });
   $(document).on("click", "a.delete_comment", function(e){
     e.preventDefault();
-    debugger
     var currentComment = this
+    currentComment.parentElement.remove()
     deleteComment(this)
   })
 })
