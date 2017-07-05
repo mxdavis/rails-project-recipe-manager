@@ -44,7 +44,17 @@ var postForm = function (form){
 }
 
 var deleteComment = function(currentComment){
-
+  debugger
+  $.ajax({
+    url: currentComment.href,
+    type: 'DELETE',
+    success: function(result) {
+        currentComment.parentElement.remove()
+    },
+    error: function(result){
+      "something went wrong" + result
+    }
+});
 }
 
 
@@ -56,6 +66,7 @@ $(document).on('turbolinks:load', function () {
   });
   $(document).on("click", "a.delete_comment", function(e){
     e.preventDefault();
+    debugger
     var currentComment = this
     deleteComment(this)
   })
