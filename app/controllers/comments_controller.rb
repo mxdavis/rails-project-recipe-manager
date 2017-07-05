@@ -5,9 +5,10 @@ class CommentsController < ApplicationController
   end
 
   def show
-    binding.pry
     comment = Comment.find_by(user: current_user, recipe: find_by_recipe_id)
-    render json: comment
+    respond_to do |f|        
+      f.json {render :json => comment, include: ['user', 'recipe']}        
+    end 
   end
 
   def create
