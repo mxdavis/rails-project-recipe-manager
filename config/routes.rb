@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources :comments
     get '/favorite' => 'favorites#show'
     post '/favorite' => 'favorites#update'
+    post '/comments' => 'comments#create'
   end
 
-  # post '/comments_create' => 'comments#create'
     
   root to: 'recipes#home'
   get '/login' => 'sessions#new'

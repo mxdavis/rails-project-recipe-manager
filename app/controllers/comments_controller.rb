@@ -11,16 +11,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-        
     if logged_in?
-      binding.pry
       comment = Comment.new(comment_params)
       comment.recipe = find_by_recipe_id
       comment.user = current_user
-      comment.save
-      
-        render json: comment, status: 201
-      
+      if comment.save
+        respond_to do |f|        
+          f.json {render :json => comment}        
+        end 
+      end
     else 
       redirect_to login_path, alert: "You must be logged in to comment"
     end

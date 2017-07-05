@@ -15,13 +15,25 @@ $(document).on('turbolinks:load', function () {
 
     let form = $(this)
     let actionLink = form.attr("action")
-    let params = form.attr("action")
+    let params = form.serialize()
+    debugger
     
     console.log("I worked!");
-    $.post(actionLink + "/create", params)
+    $.post(actionLink, params)
 
+//in case doesnt work use:
+    // $.ajax({
+    //   url: actionLink, 
+    //   data: params, 
+    //   dataType: "json",
+    //   method: "POST" 
+    // })
     .success(function(json){
+      debugger
       console.log(json)
+    })
+    .error(function(response){
+      
     })
   });
 })
