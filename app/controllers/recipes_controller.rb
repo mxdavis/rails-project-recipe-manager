@@ -54,21 +54,18 @@ class RecipesController < ApplicationController
   end
 
   def sorted_favorite
-    @recipes = Favorite.get_favorite_recipes_in_order
-    @sort_kind = "All Recipes sorted by the most favorite ones"
-    render_layout_recipes_false
+    recipes = Favorite.get_favorite_recipes_in_order
+    render json: recipes, include: [:user, :favorite]
   end
 
   def sorted_cook_time
-    @recipes = Recipe.fastest
-    @sort_kind = "All Recipes From Fastest to Slowest"
-    render_layout_recipes_false
+    recipes = Recipe.fastest
+    render json: recipes, include: [:user, :favorite]
   end
 
   def sorted_newest
-    @recipes = Recipe.newest
-    @sort_kind = "All Recipes From Newest to Oldest"
-    render_layout_recipes_false
+    recipes = Recipe.newest
+    render json: recipes, include: [:user, :favorite]
   end
 
   private 
