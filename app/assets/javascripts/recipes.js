@@ -14,7 +14,6 @@ class Recipe {
 }
 
 Recipe.prototype.returnRecipeHtml = function(){
-  debugger
   var source   = $("#recipe-template").html();
   var template = Handlebars.compile(source);
   var context = {
