@@ -3,3 +3,12 @@
 <% if !current_page?('/') && logged_in? %>
   <%= link_to "Edit", edit_recipe_path(recipe) if current_user.can_edit?(recipe)%> | <%= link_to "Delete", recipe_path(recipe), method: :delete if current_user.can_delete?(recipe)%>
 <% end %>
+
+<script id="comment-template" type="text/x-handlebars-template">
+  <div id="each-recipes">
+    <ul>  
+      <li><h2><a href="/recipes/{{recipeId}}">{{name}}}}</a></h2></li>
+      <li>{{timeInMinutes}} minutes until it's ready | <a href="/users/{{userId}}">More Recipes by this User</a> </li>
+    </ul>
+  </div>
+</script>
