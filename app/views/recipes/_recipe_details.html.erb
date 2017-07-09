@@ -10,3 +10,46 @@
   <%= link_to "Edit", edit_recipe_path(recipe) if logged_in? && current_user.can_edit?(recipe)%>
 
   <%= link_to "Delete", recipe_path(recipe), method: :delete if logged_in? && current_user.can_delete?(recipe)%>
+
+
+<script id="recipedetail-template" type="text/x-handlebars-template">
+    <h1>{{name}}</h1>
+<h2>{{timeInMinutes}} minutes until it's ready | By: <a href="/users/{{id}}">{{userName}}</a></h2>
+
+<ul>  {{each ingrdient...}}
+    <li>1 teaspoons butter</li>
+    <li>4 grams flour</li>
+    <li>4 cups chocolate chips</li>
+    <li>1 tablespoons chocolate chips</li>
+</ul>
+
+<h4>{{description}}</h4>
+
+  
+
+  
+<div>
+
+
+  <div class="comments">
+    <h3 class="cheading"><a href="/users/{{userId}}">{{userName}}</a> gives {{rating}} stars Just Now</h3>
+    <p class="cdescription">{{description}}</p>
+
+    <a href="/recipes/{{recipeId}}/comments/{{id}}/edit">Edit</a>
+
+    <a class="delete_comment" rel="nofollow" data-method="delete" href="/recipes/{{recipeId}}/comments/{{id}}">Delete</a>
+    <br />
+  </div>
+
+</div>
+<br>
+<div id="comments">
+Add your comment below! (You must be signed in)
+  <form class="new_comment" id="new_comment" action="/recipes/{{id}}/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="YXgM7u2teFHe+OPDqiPaT50FJ/Q16GngsEVbqasOn34QBf8QjrJkVvga0YCif8ZhPbWOwQznL+tmo6wIegMPVA==">
+    
+    <div>Rating: (1-5)</div> <div><input type="text" name="comment[rating]" id="comment_rating"></div>
+    <div>Description</div> <div><input type="text" name="comment[description]" id="comment_description"></div>
+    <input type="submit" name="commit" value="Create Comment">
+</form>
+</div>
+</script>
