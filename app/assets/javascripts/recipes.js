@@ -46,8 +46,18 @@ Recipe.prototype.recipeDetailHeaderHtml = function(){
     userName: r.userName
   };
   r.template = template(context);
-  debugger
   $('#recipe-detail-header').html(r.template)
+}
+
+Recipe.prototype.recipeDetailBottomHtml = function(){
+  var source   = $("#recipedetailsbottom-template").html();
+  var template = Handlebars.compile(source);
+  var context = {
+    recipeId: r.recipeId,
+    instructions: r.instructions,
+  };
+  r.template = template(context);
+  $('#recipe-details-bottom').html(r.template)
 }
 
 var createRecipes = recipes => {
@@ -60,10 +70,10 @@ var createRecipes = recipes => {
 $(document).on("click", ".next_recipe", function(e){
   var recipeId = parseInt(this.dataset.recipeid) + 1
    $.get("/recipes/" + recipeId +".json", function(recipe) {
-     debugger
     r = new Recipe(recipe.id, recipe.name, String(recipe.time_in_minutes), recipe.instructions, recipe.user.id, recipe.user.name)
     r.recipeDetailHeaderHtml()
     r.ingredients(recipe.recipe_ingredients)
+    r.recipeDetailBottomHtml()
     })
     e.preventDefault()
 })
