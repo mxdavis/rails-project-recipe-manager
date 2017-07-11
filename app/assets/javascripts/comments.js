@@ -35,7 +35,7 @@ var postForm = function (form){
   
   $.post(actionLink, params)
   .success(function(json){
-    c = new Comment(json.data.attributes["rating"], json.data.attributes["description"], json.data.relationships.recipe.data.id, json.data.relationships.user.data.id, json.included[0].attributes.name, json.data.id)
+    c = new Comment(json.rating, json.description, json.recipe.id, json.user.id, json.user.name, json.id)
     c.returnCommentHtml()
   })
   .error(function(response){
