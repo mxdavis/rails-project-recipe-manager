@@ -1,7 +1,14 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :time_in_minutes, :instructions
+  attributes :id, :name, :time_in_minutes, :instructions, :formatted_ingredients
   has_many :favorites, serializer: FavoriteSerializer
   belongs_to :user
-  has_many :recipe_ingredients, serializer: RecipeIngredientSerializer
-  # has_many :ingredients, through: :recipe_ingredients
+
+  def formatted_ingredients
+    object.recipe_ingredients.map do |ri|
+      {
+        quantity: ri.quantity,
+        name: ri.ingredient.name
+      }
+    end
+  end
 end
