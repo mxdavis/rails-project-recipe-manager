@@ -11,6 +11,7 @@
 
   <%= link_to "Delete", recipe_path(recipe), method: :delete if logged_in? && current_user.can_delete?(recipe)%>
 
+  <%= link_to "Next", "#", class: "next_recipe", data: { recipeId: recipe.id }%>
 
 <script id="recipedetail-template" type="text/x-handlebars-template">
     <h1>{{name}}</h1>
@@ -25,7 +26,7 @@
 
 <h4>{{description}}</h4>
 
-  
+<a class="next_recipe" href="#">Next</a>
 
   
 <div>

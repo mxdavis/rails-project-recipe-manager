@@ -43,7 +43,16 @@ class RecipesController < ApplicationController
     @recipe = find_by_id(Recipe)
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @recipe, include: { recipe_ingredients: [:quantity,  ingredients: [:name]] }}
+      format.json { render json: @recipe}
+    end
+  end
+
+  def next
+    binding.pry
+    if @recipe = Recipe.find_by(id: (params[:id] + 1))
+      binding.pry
+    else
+      @recipe = Recipe.first
     end
   end
 

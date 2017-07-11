@@ -3,4 +3,5 @@ class RecipeSerializer < ActiveModel::Serializer
   has_many :favorites, serializer: FavoriteSerializer
   belongs_to :user
   has_many :recipe_ingredients, serializer: RecipeIngredientSerializer
+  # has_many :ingredients, through: :recipe_ingredients
 end
