@@ -5,7 +5,7 @@
 <%= render 'favorites/favorited', recipe: recipe%>
 </div>
 
-<div id="recipe-detail-header"><%= render 'ingredients/list_ingredients', recipe: recipe %></div>
+<div id="recipe-detail-ingredients"><%= render 'ingredients/list_ingredients', recipe: recipe %></div>
 
 <div id="recipe-details-bottom">
 
@@ -23,12 +23,11 @@
     <h1>{{name}}</h1>
 <h2>{{timeInMinutes}} minutes until it's ready | By: <a href="/users/{{id}}">{{userName}}</a></h2>
 </script>
-<script id="recipeingredients-template" type="text/x-handlebars-template">>
-<ul>  {{each ingredient...}}
-    <li>1 teaspoons butter</li>
-    <li>4 grams flour</li>
-    <li>4 cups chocolate chips</li>
-    <li>1 tablespoons chocolate chips</li>
+<script id="recipeingredients-template" type="text/x-handlebars-template">
+<ul>  
+    {{#each this}}
+    <li>{{quantity}} {{name}}</li>
+    {{/each}}
 </ul>
 </script>
 

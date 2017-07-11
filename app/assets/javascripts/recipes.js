@@ -14,9 +14,11 @@ class Recipe {
 }
 
 Recipe.prototype.ingredients = function (ingredients){
-  //make array of ingredients and quantity handlebars can handle. Also need to get ingredient name by id,
-  //may need to be a get request. and it prob needs its own handlebars, inserted into the page
-  //in the correct div
+  debugger
+  var source   = $("#recipeingredients-template").html();
+  var template = Handlebars.compile(source);
+  const ingredientList = template(ingredients)
+  $('#recipe-detail-ingredients').html(ingredientList)
 }
 
 Recipe.prototype.returnAllRecipesHtml = function(){
@@ -72,7 +74,7 @@ $(document).on("click", ".next_recipe", function(e){
    $.get("/recipes/" + recipeId +".json", function(recipe) {
     r = new Recipe(recipe.id, recipe.name, String(recipe.time_in_minutes), recipe.instructions, recipe.user.id, recipe.user.name)
     r.recipeDetailHeaderHtml()
-    r.ingredients(recipe.recipe_ingredients)
+    r.ingredients(recipe.formatted_ingredients)
     r.recipeDetailBottomHtml()
     })
     e.preventDefault()
