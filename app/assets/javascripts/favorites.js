@@ -33,7 +33,7 @@ $(document).on("click", "span.favorites", function(e){
       if (favorite == null){
         f = new Favorite(recipeId)
       }else{
-        f = new Favorite(recipeId, favorite.data.attributes["user-id"], favorite.data.id)
+        f = new Favorite(recipeId, favorite.user.id, favorite.id)
       }
       dom.currentTarget.children["0"].innerHTML = f.changeHeart()
       dom.currentTarget.className = f.changeClass()
