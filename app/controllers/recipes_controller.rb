@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     @recipe = find_by_id(Recipe)
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @recipe }
+      format.json { render json: @recipe, include: { recipe_ingredients: [:quantity,  ingredients: [:name]] }}
     end
   end
 
@@ -55,17 +55,17 @@ class RecipesController < ApplicationController
 
   def sorted_favorite
     recipes = Favorite.get_favorite_recipes_in_order
-    render json: recipes, include: [:user, :favorite]
+    render json: recipes
   end
 
   def sorted_cook_time
     recipes = Recipe.fastest
-    render json: recipes, include: [:user, :favorite]
+    render json: recipes
   end
 
   def sorted_newest
     recipes = Recipe.newest
-    render json: recipes, include: [:user, :favorite]
+    render json: recipes
   end
 
   private 
