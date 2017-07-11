@@ -9,15 +9,14 @@ class Recipe {
     this.instructions = instructions
     this.userId = userId
     this.userName = userName
-    this.ingredientId = ingredientId
-    this.quantity = quantity
     this.template = template
   }
 }
 
 Recipe.prototype.ingredients = function (ingredients){
   //make array of ingredients and quantity handlebars can handle. Also need to get ingredient name by id,
-  //may need to be a get request.
+  //may need to be a get request. and it prob needs its own handlebars, inserted into the page
+  //in the correct div
 }
 
 Recipe.prototype.returnAllRecipesHtml = function(){
@@ -35,8 +34,8 @@ Recipe.prototype.returnAllRecipesHtml = function(){
   $('#list-recipes').append(r.template)
 }
 
-Recipe.prototype.returnOneRecipeHtml = function(){
-  var source   = $("#recipedetail-template").html();
+Recipe.prototype.recipeDetailHeaderHtml = function(){
+  var source   = $("#recipedetailheader-template").html();
   var template = Handlebars.compile(source);
   var context = {
     recipeId: r.recipeId,
@@ -47,7 +46,8 @@ Recipe.prototype.returnOneRecipeHtml = function(){
     userName: r.userName
   };
   r.template = template(context);
-  $('#list-recipes').append(r.template)
+  debugger
+  $('#recipe-detail-header').html(r.template)
 }
 
 var createRecipes = recipes => {
@@ -58,11 +58,11 @@ var createRecipes = recipes => {
 }
 
 $(document).on("click", ".next_recipe", function(e){
-  debugger
   var recipeId = parseInt(this.dataset.recipeid) + 1
    $.get("/recipes/" + recipeId +".json", function(recipe) {
      debugger
     r = new Recipe(recipe.id, recipe.name, String(recipe.time_in_minutes), recipe.instructions, recipe.user.id, recipe.user.name)
+    r.recipeDetailHeaderHtml()
     r.ingredients(recipe.recipe_ingredients)
     })
     e.preventDefault()

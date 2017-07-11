@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   get 'recipes_sorted_by_favorite' => 'recipes#sorted_favorite'
   get 'recipes_sorted_by_cook_time' => 'recipes#sorted_cook_time'
   get 'recipes_sorted_by_newest' => 'recipes#sorted_newest'
+  # post 'next_recipe' => 'recipes#next'
 
 end

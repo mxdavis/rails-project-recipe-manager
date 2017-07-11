@@ -1,12 +1,13 @@
-<div class="recipe-detail-header">
+<div id="recipe-detail-header">
   <h1><%= recipe.name %></h1>
   <h2><%= recipe.time_in_minutes %> minutes until it's ready | By: <%= link_to recipe.user_name, user_path(recipe.user)%></h2>
-</div>
+
 <%= render 'favorites/favorited', recipe: recipe%>
+</div>
 
-<div class="recipe-detail-header"><%= render 'ingredients/list_ingredients', recipe: recipe %></div>
+<div id="recipe-detail-header"><%= render 'ingredients/list_ingredients', recipe: recipe %></div>
 
-<div class="recipe-details-bottom">
+<div id="recipe-details-bottom">
 
   <h4><%= recipe.instructions %></h4>
 
