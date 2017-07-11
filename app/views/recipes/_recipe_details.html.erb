@@ -1,11 +1,12 @@
-<h1><%= recipe.name %></h1>
-<h2><%= recipe.time_in_minutes %> minutes until it's ready | By: <%= link_to recipe.user_name, user_path(recipe.user)%></h2>
-
+<div class="recipe-detail-header">
+  <h1><%= recipe.name %></h1>
+  <h2><%= recipe.time_in_minutes %> minutes until it's ready | By: <%= link_to recipe.user_name, user_path(recipe.user)%></h2>
+</div>
 <%= render 'favorites/favorited', recipe: recipe%>
 
-<%= render 'ingredients/list_ingredients', recipe: recipe %>
+<div class="recipe-detail-header"><%= render 'ingredients/list_ingredients', recipe: recipe %></div>
 
-<h4><%= recipe.instructions %></h4>
+<div class="recipe-detail-instruction"><h4><%= recipe.instructions %></h4></div>
 
   <%= link_to "Edit", edit_recipe_path(recipe) if logged_in? && current_user.can_edit?(recipe)%>
 
@@ -17,7 +18,7 @@
     <h1>{{name}}</h1>
 <h2>{{timeInMinutes}} minutes until it's ready | By: <a href="/users/{{id}}">{{userName}}</a></h2>
 
-<ul>  {{each ingrdient...}}
+<ul>  {{each ingredient...}}
     <li>1 teaspoons butter</li>
     <li>4 grams flour</li>
     <li>4 cups chocolate chips</li>
