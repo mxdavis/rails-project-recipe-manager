@@ -78,10 +78,4 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(recipe_ingredients_attributes: [:quantity, :ingredient_id, ingredient: [:name]])
   end
 
-  def render_layout_recipes_false
-    respond_to do |format|
-      format.html { render :recipes, layout: false}
-      format.json {render json: @recipes}
-    end
-  end
 end

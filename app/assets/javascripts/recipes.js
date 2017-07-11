@@ -2,13 +2,13 @@ var title
 var r
 
 class Recipe {
-  constructor(recipeId, name, timeInMinutes, instructions, userId, favoriteId, template) {
+  constructor(recipeId, name, timeInMinutes, instructions, userId, userName, template) {
     this.recipeId = recipeId
     this.name = name
     this.timeInMinutes = timeInMinutes
     this.instructions = instructions
     this.userId = userId
-    this.favoriteId = favoriteId
+    this.userName = userName
     this.template = template
   }
 }
@@ -22,14 +22,15 @@ Recipe.prototype.returnRecipeHtml = function(){
     timeInMinutes: r.timeInMinutes,
     instructions: r.instructions,
     userId: r.userId,
+    userName: r.userName
   };
   r.template = template(context);
   $('#list-recipes').append(r.template)
 }
 
 var createRecipes = recipes => {
-  recipes.data.forEach(function(recipe) {
-    r = new Recipe(recipe.id, recipe.attributes.name, String(recipe.attributes["time-in-minutes"]), recipe.attributes.instructions, recipe.relationships.user.data.id, recipe.relationships.favorites.data)
+  recipes.forEach(function(recipe) {
+    r = new Recipe(recipe.id, recipe.name, String(recipe.time_in_minutes), recipe.instructions, recipe.user.id, recipe.user.name)
     r.returnRecipeHtml()
   })
 }
