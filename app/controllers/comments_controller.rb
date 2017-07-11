@@ -41,10 +41,6 @@ class CommentsController < ApplicationController
     comment = Comment.find_by(id: id)
     comment.delete
     flash[:notice] = "Comment has been deleted"
-    # respond_to do |f| 
-    #   f.json {render :nothing, status: 200}       
-    #   # f.html {redirect_back(fallback_location: root_path)}       
-    # end 
   end
 
 
