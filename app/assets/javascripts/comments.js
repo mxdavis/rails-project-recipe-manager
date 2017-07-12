@@ -24,7 +24,7 @@ Comment.prototype.returnCommentHtml = function(){
     id: c.id
   };
   c.template = template(context);
-  $('div#comments').before(c.template)
+  $('div#show-comments').append(c.template)
   $('input#comment_rating').val("")
   $('input#comment_description').val("")
 }
