@@ -17,7 +17,8 @@ class RecipeSerializer < ActiveModel::Serializer
       {
         rating: c.rating,
         description: c.description,
-        userName: c.user.name
+        userName: c.user.name,
+        userId: c.user.id
       }
     end
   end
