@@ -34,7 +34,7 @@ Recipe.prototype.commentForm = function(){
     id: r.recipeId
   };
   r.template = template(context);
-  $('#comments').html(r.template)
+  $('#new_comment').html(r.template)
 }
 
 Recipe.prototype.returnAllRecipesHtml = function(){
