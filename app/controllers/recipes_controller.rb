@@ -35,16 +35,14 @@ class RecipesController < ApplicationController
     else 
       redirect_to new_recipe_path, alert: recipe.errors.full_messages.each {|m| m}.join
     end
-
-
   end
 
   def show
-    @recipe = find_by_id(Recipe)
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @recipe}
-    end
+    @recipe = find_by_id(Recipe) || Recipe.find(1)
+      respond_to do |format|
+        format.html  { render :show }
+        format.json { render json: @recipe}
+      end
   end
 
   def next
