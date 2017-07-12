@@ -1,5 +1,5 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :time_in_minutes, :instructions, :formatted_ingredients
+  attributes :id, :name, :time_in_minutes, :instructions, :formatted_ingredients, :formatted_comments
   has_many :favorites, serializer: FavoriteSerializer
   belongs_to :user
 
@@ -8,6 +8,16 @@ class RecipeSerializer < ActiveModel::Serializer
       {
         quantity: ri.quantity,
         name: ri.ingredient.name
+      }
+    end
+  end
+
+    def formatted_comments
+    object.comments.map do |c|
+      {
+        rating: c.rating,
+        description: c.description,
+        userName: c.user.name
       }
     end
   end
