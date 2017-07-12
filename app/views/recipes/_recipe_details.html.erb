@@ -37,7 +37,7 @@
 <a class="next_recipe" data-recipeid="{{recipeId}}" href="#">Next</a>
 </script>
 
-<script id="recipedetailcomments-template" type="text/x-handlebars-template"
+<script id="recipedetailcomments-template" type="text/x-handlebars-template">
   <div>
     {{#each this}}
       <h3 class="cheading"><a href="/users/{{userId}}">{{userName}}</a> gives {{rating}} stars</h3>
@@ -46,7 +46,7 @@
   </div>
 </script>
 
-<script id="recipedetailscommentform-template" type="text/x-handlebars-template"
+<script id="recipedetailscommentform-template" type="text/x-handlebars-template">
   <div>
     <form class="new_comment" id="new_comment" action="/recipes/{{id}}/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="rmz27HBdgcx+vXUiInd9sW5P4SF35PeVWjNz3xqmu6nVEHMWBuexkVvdd7nPTXqCiz5Xx6vuex1ljgpHRbiWTQ==">
       
