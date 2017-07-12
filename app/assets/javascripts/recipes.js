@@ -14,11 +14,27 @@ class Recipe {
 }
 
 Recipe.prototype.ingredients = function (ingredients){
-  debugger
   var source   = $("#recipeingredients-template").html();
   var template = Handlebars.compile(source);
   const ingredientList = template(ingredients)
   $('#recipe-detail-ingredients').html(ingredientList)
+}
+
+Recipe.prototype.comments = function (comments){
+  var source   = $("#recipedetailcomments-template").html();
+  var template = Handlebars.compile(source);
+  const commentList = template(comments)
+  $('#show-comments').html(commentList)
+}
+
+Recipe.prototype.commentForm = function(){
+  var source   = $("#recipedetailscommentform-template").html();
+  var template = Handlebars.compile(source);
+  var context = {
+    id: r.recipeId
+  };
+  r.template = template(context);
+  $('#comments').html(r.template)
 }
 
 Recipe.prototype.returnAllRecipesHtml = function(){
@@ -76,6 +92,8 @@ $(document).on("click", ".next_recipe", function(e){
     r.recipeDetailHeaderHtml()
     r.ingredients(recipe.formatted_ingredients)
     r.recipeDetailBottomHtml()
+    r.comments(recipe.formatted_comments)
+    r.commentForm(recipe)
     })
     e.preventDefault()
 })

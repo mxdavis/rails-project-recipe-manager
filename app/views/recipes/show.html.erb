@@ -1,5 +1,5 @@
 <%= render 'recipes/recipe_details', recipe: @recipe %>
-<div>
+<div id="show-comments">
 <%= render 'comments/list_comments', comments: @recipe.comments if @recipe.comments %>
 </div>
 <br />

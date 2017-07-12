@@ -37,19 +37,23 @@
 <a class="next_recipe" data-recipeid="{{recipeId}}" href="#">Next</a>
 </script>
 
-<script class="recipedetailcomments-template" type="text/x-handlebars-template"
-  {{#each this}}
-    <h3 class="cheading"><a href="/users/{{userId}}">{{userName}}</a> gives {{rating}} stars</h3>
-    <p class="cdescription">{{description}}</p>
-  {{/each}}
+<script id="recipedetailcomments-template" type="text/x-handlebars-template"
+  <div>
+    {{#each this}}
+      <h3 class="cheading"><a href="/users/{{userId}}">{{userName}}</a> gives {{rating}} stars</h3>
+      <p class="cdescription">{{description}}</p>
+    {{/each}}
+  </div>
 </script>
 
 <script id="recipedetailscommentform-template" type="text/x-handlebars-template"
-Add your comment below! (You must be signed in)
-  <form class="new_comment" id="new_comment" action="/recipes/3/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="rmz27HBdgcx+vXUiInd9sW5P4SF35PeVWjNz3xqmu6nVEHMWBuexkVvdd7nPTXqCiz5Xx6vuex1ljgpHRbiWTQ==">
-    
-    <div>Rating: (1-5)</div> <div><input type="text" name="comment[rating]" id="comment_rating"></div>
-    <div>Description</div> <div><input type="text" name="comment[description]" id="comment_description"></div>
-    <input type="submit" name="commit" value="Create Comment">
-  </form>
+  <div>
+    Add your comment below! (You must be signed in)
+    <form class="new_comment" id="new_comment" action="/recipes/{{id}}/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="rmz27HBdgcx+vXUiInd9sW5P4SF35PeVWjNz3xqmu6nVEHMWBuexkVvdd7nPTXqCiz5Xx6vuex1ljgpHRbiWTQ==">
+      
+      <div>Rating: (1-5)</div> <div><input type="text" name="comment[rating]" id="comment_rating"></div>
+      <div>Description</div> <div><input type="text" name="comment[description]" id="comment_description"></div>
+      <input type="submit" name="commit" value="Create Comment">
+    </form>
+  </div>
 </script>
