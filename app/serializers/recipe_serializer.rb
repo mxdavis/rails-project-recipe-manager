@@ -12,7 +12,7 @@ class RecipeSerializer < ActiveModel::Serializer
     end
   end
 
-    def formatted_comments
+  def formatted_comments
     object.comments.map do |c|
       {
         rating: c.rating,
