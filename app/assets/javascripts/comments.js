@@ -52,6 +52,7 @@ var deleteComment = function(currentComment){
     data: data, 
     dataType: "json",
     success: function(result) {
+      console.log('hi')
     },
     error: function(result){
       "something went wrong" + result
@@ -66,10 +67,11 @@ $(document).on('turbolinks:load', function () {
     form = $(this)
     postForm(form)
   });
-  $(document).on("click", "a.delete_comment", function(e){
+  $('.delete_comment').on("click", function(e){
+    // var currentComment = this
     e.preventDefault();
-    var currentComment = this
-    currentComment.parentElement.remove()
-    deleteComment(this)
+    debugger
+    // currentComment.parentElement.remove()
+    // e.preventDefault();
   })
 })

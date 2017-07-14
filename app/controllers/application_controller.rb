@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :current_user, :logged_in?
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
-  helper_method :current_user
+  
 
   def logged_in?
     !!current_user
   end
-  helper_method :logged_in?
 
   def authorized_user
     redirect_to request.referer || root_path, alert: "You cannot access this page" unless logged_in? && current_user.id == params[:id].to_i
