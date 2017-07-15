@@ -46,15 +46,10 @@ var postForm = function (form){
 }
 
 var deleteComment = function(currentComment){
-  debugger
-  var commentId = currentComment.dataset.comment
   $.ajax({
-    url: '/comments/' + commentId,
+    url: currentComment.href,
     type: 'DELETE',
-    data: data, 
-    dataType: "json",
     success: function(result) {
-      console.log('hi')
     },
     error: function(result){
       "something went wrong" + result
