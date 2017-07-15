@@ -4,20 +4,20 @@ Rails.application.routes.draw do
     resources :admin
   end
   resources :recipes do 
-    resources :comments
+    resources :comments, except: [:destroy]
     get '/favorite' => 'favorites#show'
     post '/favorite' => 'favorites#update'
     post '/comments' => 'comments#create'
   end
 
+  resources :comments, only: [:destroy]
     
   root to: 'recipes#home'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
   get 'auth/google_oauth2/callback' => 'sessions#create'
-
+  
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
