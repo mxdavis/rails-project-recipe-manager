@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = find_by_id(Recipe) || Recipe.find(1)
+    @recipe = find_by_id(Recipe) || Recipe.first
       respond_to do |format|
         format.html  { render :show }
         format.json { render json: @recipe}
@@ -55,9 +55,12 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    recipe = find_by_id(Recipe)
-    recipe.delete
-    redirect_to root_path
+    binding.pry
+    if authorized_admin
+      recipe = find_by_id(Recipe)
+      recipe.delete
+      redirect_to root_path
+    end
   end
 
   def sorted_favorite
