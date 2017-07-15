@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = find_by_id(Recipe)
+    @recipe = find_by_id(Recipe) || Recipe.first
       respond_to do |format|
         format.html  { render :show }
         format.json { render json: @recipe}
