@@ -1,4 +1,6 @@
-var c 
+"use strict";
+
+var c;
 
 class Comment {
   constructor(rating, description, recipeId, userId, userName, id, template) {
@@ -44,10 +46,10 @@ var postForm = function (form){
 }
 
 var deleteComment = function(currentComment){
-
-  let data = currentComment.parentElement.serialize();
+  debugger
+  var commentId = currentComment.dataset.comment
   $.ajax({
-    url: currentComment.href,
+    url: '/comments/' + commentId,
     type: 'DELETE',
     data: data, 
     dataType: "json",
@@ -61,17 +63,18 @@ var deleteComment = function(currentComment){
 }
 
 
-$(document).on('turbolinks:load', function () {
+$(function() {
   $('form#new_comment').on("submit", function(e){
     e.preventDefault();
-    form = $(this)
+    var form = $(this)
     postForm(form)
   });
-  $('.delete_comment').on("click", function(e){
-    // var currentComment = this
-    e.preventDefault();
-    debugger
-    // currentComment.parentElement.remove()
-    // e.preventDefault();
-  })
+})
+
+$(document).on("click", 'a.dcomment', function(event){
+  var currentComment = this
+  event.preventDefault();
+  currentComment.parentElement.remove()
+  deleteComment(currentComment)
+  
 })
